@@ -2,7 +2,7 @@
 
 *Jekyll plugin to silently generate a sitemaps.org compliant sitemap for your Jekyll site*
 
-[![Build Status](https://travis-ci.org/jekyll/jekyll-sitemap.svg?branch=master)](https://travis-ci.org/jekyll/jekyll-sitemap)
+[![Build Status](https://travis-ci.com/emmasax4/jekyll-sitemap.svg?branch=main)](https://travis-ci.com/emmasax4/jekyll-sitemap)
 
 ## Usage
 
@@ -54,7 +54,7 @@ sitemap: false
 
 To exclude files from your sitemap. It can be achieved with configuration using [Jekyll v3.7.2 and jekyll-sitemap v1.2.0](https://github.com/jekyll/jekyll/commit/776433109b96cb644938ffbf9caf4923bdde4d7f).
 
-Add a glob config to your `_config.yml` file. 
+Add a glob config to your `_config.yml` file.
 
 ```yml
 defaults:

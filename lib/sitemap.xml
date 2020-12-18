@@ -30,7 +30,9 @@
   {% for file in static_files %}
     <url>
       <loc>{{ file.path | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
-      <lastmod>{{ file.modified_time | date_to_xmlschema }}</lastmod>
+      {% if file.last_modified_at %}
+        <lastmod>{{ file.last_modified_at | date_to_xmlschema }}</lastmod>
+      {% endif %}
     </url>
   {% endfor %}
 </urlset>
