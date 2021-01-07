@@ -1,5 +1,6 @@
 language: ruby
 cache: bundler
+
 rvm:
   - &latest_ruby 2.7
   - 2.5
@@ -7,13 +8,17 @@ rvm:
 branches:
   only:
   - main
+  - /^v\d+\.\d+\.\d+/
+
 matrix:
   include:
   # GitHub Pages
-  - rvm: *latest_ruby
+  - rvm: 2.7.1
     env:
-    - JEKYLL_VERSION=">= 4.0.0"
-    - GITHUB_PAGES=1 # Only set on one build in matrix
+      - JEKYLL_VERSION="~> 3.9"
+      - GITHUB_PAGES=1 # Only set on one build in matrix
+  - rvm: *latest_ruby
+    env: JEKYLL_VERSION="~> 4.0"
 
 env:
   matrix:
