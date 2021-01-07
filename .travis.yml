@@ -4,6 +4,7 @@ cache: bundler
 rvm:
   - &latest_ruby 2.7
   - 2.5
+  - 3.0
 
 branches:
   only:
@@ -17,12 +18,11 @@ matrix:
       env:
         - JEKYLL_VERSION="~> 3.9"
         - GITHUB_PAGES=1 # Only set on one build in matrix
-    - rvm: *latest_ruby
-      env: JEKYLL_VERSION="~> 4.0"
 
 env:
   matrix:
     - JEKYLL_VERSION="~> 3.9"
+    - JEKYLL_VERSION="~> 4.0"
 
 git:
   depth: 1000
