@@ -1,23 +1,28 @@
 language: ruby
 cache: bundler
+
 rvm:
   - &latest_ruby 2.7
   - 2.5
 
 branches:
   only:
-  - main
+    - main
+    - /^v\d+\.\d+\.\d+/
+
 matrix:
   include:
-  # GitHub Pages
-  - rvm: *latest_ruby
-    env:
-    - JEKYLL_VERSION=">= 4.0.0"
-    - GITHUB_PAGES=1 # Only set on one build in matrix
+    # GitHub Pages
+    - rvm: 2.7.1
+      env:
+        - JEKYLL_VERSION="~> 3.9"
+        - GITHUB_PAGES=1 # Only set on one build in matrix
+    - rvm: *latest_ruby
+      env: JEKYLL_VERSION="~> 4.0"
 
 env:
   matrix:
-  - JEKYLL_VERSION="~> 3.9"
+    - JEKYLL_VERSION="~> 3.9"
 
 git:
   depth: 1000
@@ -28,4 +33,5 @@ before_install:
 install:
   - travis_retry script/bootstrap
 
-script: script/cibuild
+script:
+  - script/cibuild
