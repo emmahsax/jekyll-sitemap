@@ -4,6 +4,7 @@ cache: bundler
 rvm:
   - &latest_ruby 2.7
   - 2.5
+  - 3.0
 
 branches:
   only:
