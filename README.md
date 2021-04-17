@@ -2,7 +2,7 @@
 
 *Jekyll plugin to silently generate a sitemaps.org compliant sitemap for your Jekyll site*
 
-[![Build Status](https://travis-ci.com/emmasax4/jekyll-sitemap.svg?branch=main)](https://travis-ci.com/emmasax4/jekyll-sitemap)
+[![Build Status](https://travis-ci.com/emmahsax/jekyll-sitemap.svg?branch=main)](https://travis-ci.com/emmahsax/jekyll-sitemap)
 
 ## Usage
 
