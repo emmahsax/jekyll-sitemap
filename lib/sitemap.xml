@@ -28,11 +28,13 @@
 
   {% assign static_files = page.static_files | where_exp:'page','page.sitemap != false' | where_exp:'page','page.name != "404.html"' %}
   {% for file in static_files %}
-    <url>
-      <loc>{{ file.path | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
-      {% if file.last_modified_at %}
-        <lastmod>{{ file.last_modified_at | date_to_xmlschema }}</lastmod>
-      {% endif %}
-    </url>
+    {% unless file.path contains "/assets/images/" %}
+      <url>
+        <loc>{{ file.path | replace:'/index.html','/' | absolute_url | xml_escape }}</loc>
+        {% if file.last_modified_at %}
+          <lastmod>{{ file.last_modified_at | date_to_xmlschema }}</lastmod>
+        {% endif %}
+      </url>
+    {% endunless %}
   {% endfor %}
 </urlset>
