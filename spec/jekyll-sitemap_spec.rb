@@ -131,6 +131,10 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).not_to match %r!/404\.html</loc>!
   end
 
+  it "does not include the 404 page" do
+    expect(contents).not_to match %r!/404</loc>!
+  end
+
   it "does not format timestamps of static files" do
     expect(contents).not_to match %r!/test\.pdf</loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}</lastmod>!
   end
