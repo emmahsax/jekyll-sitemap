@@ -131,8 +131,16 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).not_to match %r!/404\.html</loc>!
   end
 
-  it "correctly formats timestamps of static files" do
-    expect(contents).to match %r!/this-is-a-subfile\.html</loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}</lastmod>!
+  it "does not include the 404 page" do
+    expect(contents).not_to match %r!/404</loc>!
+  end
+
+  it "does not format timestamps of static files" do
+    expect(contents).not_to match %r!/test\.pdf</loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}</lastmod>!
+  end
+
+  it "does not include images in the sitemap" do
+    expect(contents).not_to match  %r!/assets/images/image\.jpeg</loc>!
   end
 
   it "includes the correct number of items" do
