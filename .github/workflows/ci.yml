@@ -86,3 +86,23 @@ jobs:
             echo -e "\nTry running \`script/fmt -a\` to automatically fix errors"
           fi
           exit $success
+  gem_build:
+    if: "!contains(github.event.commits[0].message, '[ci skip]')"
+    name: "Test Gem build (Ruby ${{ matrix.ruby_version }})"
+    runs-on: 'ubuntu-latest'
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby_version:
+        - 2.5
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 5
+      - name: "Set up Ruby ${{ matrix.ruby_version }}"
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - name: Test Gem build
+        run:  bundle exec gem build jekyll-sitemap.gemspec
