@@ -34,6 +34,8 @@ jobs:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
       - name: Execute tests
+        run:  bundle exec rspec
+      - name: Execute jekyll-last-modified-at.rb
         run:  bundle exec rspec spec/test_jekyll-last-modified-at.rb
   j3:
     if: "!contains(github.event.commits[0].message, '[ci skip]')"
@@ -58,6 +60,8 @@ jobs:
           ruby-version: ${{ matrix.ruby_version }}
           bundler-cache: true
       - name: Execute tests
+        run:  bundle exec rspec
+      - name: Execute jekyll-last-modified-at.rb
         run:  bundle exec rspec spec/test_jekyll-last-modified-at.rb
   style_check:
     if: "!contains(github.event.commits[0].message, '[ci skip]')"
