@@ -1,0 +1,56 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  ci:
+    name: "Unit Tests (Ruby ${{ matrix.ruby_version }}, Jekyll ${{ matrix.jekyll_version }})"
+    runs-on: "ubuntu-latest"
+    env:
+      JEKYLL_VERSION: ${{ matrix.jekyll_version }}
+    strategy:
+      fail-fast: false
+      matrix:
+        ruby_version:
+          - "2.5"
+          - "2.7"
+          - "3.0"
+        jekyll_version:
+          - "~> 4.0"
+        include:
+          - ruby_version: "2.7.3"
+            jekyll_version: "~> 3.9"
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: "Set Up Ruby ${{ matrix.ruby_version }}"
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - name: Execute tests
+        run:  bash script/test
+
+  gem_build:
+    name: "Test Building Gem (Ruby ${{ matrix.ruby_version }})"
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        ruby_version:
+          - 2.7
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: "Set Up Ruby ${{ matrix.ruby_version }}"
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby_version }}
+          bundler-cache: true
+      - name: Test Gem Build
+        run:  bundle exec gem build jekyll-sitemap.gemspec
