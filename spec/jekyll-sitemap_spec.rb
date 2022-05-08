@@ -135,6 +135,10 @@ describe(Jekyll::JekyllSitemap) do
     expect(contents).not_to match %r!/404</loc>!
   end
 
+  it "does not include pages that are paginated" do
+    expect(contents).not_to match %r!/permalink/2/</loc>!
+  end
+
   it "does not format timestamps of static files" do
     expect(contents).not_to match %r!/test\.pdf</loc>\s+<lastmod>\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(-|\+)\d{2}:\d{2}</lastmod>!
   end
