@@ -18,6 +18,9 @@ Gem::Specification.new do |spec|
 
   spec.required_ruby_version = ">= 2.5.0"
 
+  spec.add_dependency "base64", "~> 0.2"
+  spec.add_dependency "bigdecimal", "~> 3.1"
+  spec.add_dependency "csv", "~> 3.2"
   spec.add_dependency "jekyll", ">= 3.9", "< 5.0"
 
   spec.add_development_dependency "bundler", "~> 2.2"
