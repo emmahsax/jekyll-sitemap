@@ -4,6 +4,16 @@
 
 [![Build Status](https://travis-ci.com/emmahsax/jekyll-sitemap.svg?branch=main)](https://travis-ci.com/emmahsax/jekyll-sitemap)
 
+## Archival Notice
+
+This repository has been archived and designated as read-only. From GitHub's documentation:
+
+> This will make the emmahsax/jekyll-sitemap repository, issues, pull requests, labels, milestones, projects, wiki, releases, commits, tags, branches, reactions and comments read-only and disable any future comments. The repository can still be forked.
+
+For a similar GitHub Action that is _not_ archived, please visit the source of this project: https://github.com/jekyll/jekyll-sitemap.
+
+To unarchive this repository at any time, please reach out to me at https://emmasax.com/contact-me/.
+
 ## Usage
 
 1. Add `gem 'jekyll-sitemap'` to your site's Gemfile and run `bundle`
